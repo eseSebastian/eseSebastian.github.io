@@ -1,0 +1,5 @@
+json{
+  "buildCommand": "",
+  "outputDirectory": ".",
+  "rootDirectory": "."
+}
