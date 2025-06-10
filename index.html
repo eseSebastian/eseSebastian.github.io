@@ -1,394 +1,154 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sebastian's Portfolio</title>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap">
-    <style>
-        :root {
-            --bg-color: #0a0e17;
-            --text-color: rgba(255, 255, 255, 0.9);
-            --accent-color: #64ffda;
-            --glass-bg: rgba(16, 24, 39, 0.7);
-            --glass-border: rgba(255, 255, 255, 0.1);
-            --card-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.36);
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            font-family: 'Inter', sans-serif;
-            line-height: 1.6;
-            background-image: 
-                radial-gradient(circle at 10% 20%, rgba(100, 255, 218, 0.1) 0%, transparent 30%),
-                radial-gradient(circle at 90% 80%, rgba(100, 255, 218, 0.08) 0%, transparent 40%);
-            background-attachment: fixed;
-            min-height: 100vh;
-            overflow-x: hidden;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 2rem;
-        }
-
-        header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1.5rem 0;
-            margin-bottom: 4rem;
-        }
-
-        .logo {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--accent-color);
-            letter-spacing: 1px;
-        }
-
-        .logo span {
-            color: var(--text-color);
-            opacity: 0.8;
-        }
-
-        .hero {
-            display: flex;
-            flex-direction: column;
-            gap: 2rem;
-            margin-bottom: 6rem;
-        }
-
-        h1 {
-            font-size: 3.5rem;
-            font-weight: 700;
-            line-height: 1.2;
-            margin-bottom: 1rem;
-        }
-
-        h1 span {
-            color: var(--accent-color);
-        }
-
-        .subtitle {
-            font-size: 1.5rem;
-            opacity: 0.8;
-            max-width: 650px;
-        }
-
-        .projects-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 2rem;
-        }
-
-        .projects-title {
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-        }
-
-        .projects-title h2 {
-            font-size: 1.75rem;
-            font-weight: 600;
-        }
-
-        .projects-title .terminal-icon {
-            color: var(--accent-color);
-            font-size: 1.5rem;
-        }
-
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-            gap: 2rem;
-        }
-
-        .project-card {
-            background: var(--glass-bg);
-            border-radius: 12px;
-            border: 1px solid var(--glass-border);
-            padding: 1.5rem;
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            box-shadow: var(--card-shadow);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            overflow: hidden;
-            position: relative;
-        }
-
-        .project-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
-        }
-
-        .project-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 3px;
-            background: linear-gradient(90deg, var(--accent-color), transparent);
-            opacity: 0.7;
-        }
-
-        .project-title {
-            font-size: 1.25rem;
-            font-weight: 600;
-            margin-bottom: 0.75rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .project-title .folder-icon {
-            color: var(--accent-color);
-            font-size: 1.25rem;
-        }
-
-        .project-title a {
-            color: inherit;
-            text-decoration: none;
-            transition: color 0.2s ease;
-        }
-
-        .project-title a:hover {
-            color: var(--accent-color);
-        }
-
-        .project-description {
-            opacity: 0.8;
-            margin-bottom: 1.5rem;
-            font-size: 0.95rem;
-        }
-
-        .project-meta {
-            display: flex;
-            gap: 1.5rem;
-            font-size: 0.85rem;
-            color: rgba(255, 255, 255, 0.6);
-        }
-
-        .project-meta .meta-item {
-            display: flex;
-            align-items: center;
-            gap: 0.35rem;
-        }
-
-        .project-meta .meta-icon {
-            font-size: 1rem;
-            color: var(--accent-color);
-            opacity: 0.8;
-        }
-
-        footer {
-            margin-top: 6rem;
-            padding: 2rem 0;
-            text-align: center;
-            opacity: 0.7;
-            font-size: 0.9rem;
-        }
-
-        /* Terminal-like command styling */
-        .command-line {
-            font-family: 'JetBrains Mono', monospace;
-            background: rgba(10, 14, 23, 0.5);
-            border-radius: 8px;
-            padding: 1rem 1.5rem;
-            margin: 2rem 0;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            overflow-x: auto;
-        }
-
-        .prompt {
-            color: var(--accent-color);
-            margin-right: 0.75rem;
-        }
-
-        .command {
-            color: var(--text-color);
-        }
-
-        @media (max-width: 768px) {
-            h1 {
-                font-size: 2.5rem;
-            }
-            
-            .subtitle {
-                font-size: 1.2rem;
-            }
-            
-            .projects-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .container {
-                padding: 1.5rem;
-            }
-        }
-
-        /* Futuristic UI elements */
-        .glass-button {
-            background: rgba(100, 255, 218, 0.1);
-            color: var(--accent-color);
-            border: 1px solid rgba(100, 255, 218, 0.3);
-            padding: 0.6rem 1.5rem;
-            border-radius: 4px;
-            font-weight: 500;
-            transition: all 0.2s ease;
-            cursor: pointer;
-            backdrop-filter: blur(4px);
-            -webkit-backdrop-filter: blur(4px);
-        }
-
-        .glass-button:hover {
-            background: rgba(100, 255, 218, 0.2);
-            border-color: var(--accent-color);
-        }
-
-        /* Animation for terminal-like typing effect */
-        .typing-effect {
-            overflow: hidden;
-            border-right: 2px solid var(--accent-color);
-            white-space: nowrap;
-            animation: typing 3.5s steps(40, end), blink-caret 0.75s step-end infinite;
-            display: inline-block;
-        }
-
-        @keyframes typing {
-            from { width: 0 }
-            to { width: 100% }
-        }
-
-        @keyframes blink-caret {
-            from, to { border-color: transparent }
-            50% { border-color: var(--accent-color) }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Sebastian Saavedra - Full Stack Developer Portfolio">
+  <meta name="keywords" content="portfolio, web developer, full stack, frontend, backend">
+  <title>SBS .-- | Portfolio</title>
+  <link rel="stylesheet" href="style.css">
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%2300f5ff' d='M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z'/%3E%3Cpath fill='%2300f5ff' d='M12 8v8M8 12h8'/%3E%3C/svg%3E">
 </head>
 <body>
-    <div class="container">
-        <header>
-            <div class="logo">SBS<span>.dev</span></div>
-            <div class="glass-button">Contact</div>
-        </header>
-
-        <section class="hero">
-            <div>
-                <h1>Full Stack <span>Developer</span></h1>
-                <p class="subtitle">Building elegant, performant, and user-focused digital experiences with modern technologies.</p>
-            </div>
-            
-            <div class="command-line">
-                <span class="prompt">~/portfolio$</span>
-                <span class="command typing-effect">ls -la projects/</span>
-            </div>
-        </section>
-
-        <section class="projects">
-            <div class="projects-header">
-                <div class="projects-title">
-                    <div class="terminal-icon">❯</div>
-                    <h2>Projects</h2>
-                </div>
-            </div>
-
-            <div class="projects-grid">
-                <div class="project-card">
-                    <div class="project-title">
-                        <div class="folder-icon">📁</div>
-                        <a href="https://marketplace.visualstudio.com/items?itemName=your-username.vscode-claude-indicator" target="_blank">vscode-claude-indicator</a>
-                    </div>
-                    <p class="project-description">
-                        A VS Code extension that provides status indicators and quick access to Claude AI assistant, enhancing developer productivity.
-                    </p>
-                    <div class="project-meta">
-                        <div class="meta-item">
-                            <div class="meta-icon">⚙️</div>
-                            <span>TypeScript</span>
-                        </div>
-                        <div class="meta-item">
-                            <div class="meta-icon">📦</div>
-                            <span>VS Code API</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="project-card">
-                    <div class="project-title">
-                        <div class="folder-icon">📁</div>
-                        <a href="https://sbs-web.netlify.app" target="_blank">sbs-web</a>
-                    </div>
-                    <p class="project-description">
-                        A modern portfolio website with futuristic UI design featuring glass morphism and elegant interactions.
-                    </p>
-                    <div class="project-meta">
-                        <div class="meta-item">
-                            <div class="meta-icon">⚙️</div>
-                            <span>HTML/CSS</span>
-                        </div>
-                        <div class="meta-item">
-                            <div class="meta-icon">📦</div>
-                            <span>JavaScript</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="project-card">
-                    <div class="project-title">
-                        <div class="folder-icon">📄</div>
-                        <a href="#" target="_blank">about.md</a>
-                    </div>
-                    <p class="project-description">
-                        Full-stack developer with a passion for creating intuitive interfaces and robust backend systems. Experienced in modern JavaScript frameworks and cloud infrastructure.
-                    </p>
-                    <div class="project-meta">
-                        <div class="meta-item">
-                            <div class="meta-icon">🔧</div>
-                            <span>React, Node.js</span>
-                        </div>
-                        <div class="meta-item">
-                            <div class="meta-icon">🚀</div>
-                            <span>AWS, GCP</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="project-card">
-                    <div class="project-title">
-                        <div class="folder-icon">📄</div>
-                        <a href="#" target="_blank">contact.txt</a>
-                    </div>
-                    <p class="project-description">
-                        Let's connect! Find me on social media or drop me an email to discuss collaboration opportunities.
-                    </p>
-                    <div class="project-meta">
-                        <div class="meta-item">
-                            <div class="meta-icon">📧</div>
-                            <span>username@example.com</span>
-                        </div>
-                        <div class="meta-item">
-                            <div class="meta-icon">💻</div>
-                            <span>github.com/username</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <footer>
-            <p>© 2023 Sebastian Saavedra. All rights reserved.</p>
-        </footer>
+  <!-- Floating Shapes -->
+  <div class="shapes">
+    <div class="shape shape-1"></div>
+    <div class="shape shape-2"></div>
+    <div class="shape shape-3"></div>
+    <div class="shape shape-4"></div>
+  </div>
+  
+  <!-- Header / Navigation -->
+  <header class="header">
+    <div class="container header-inner">
+      <a href="#" class="logo">sbs <span class="highlight">.--</span></a>
+      
+      <nav>
+        <ul class="nav-menu" id="nav-menu">
+          <li><a href="#projects" class="nav-link">Projects</a></li>
+          <li><a href="#about" class="nav-link">About</a></li>
+          <li><a href="#contact" class="nav-link">Contact</a></li>
+        </ul>
+        
+        <button id="mobile-menu-btn" class="mobile-menu-btn" aria-label="Toggle menu">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M3 12H21M3 6H21M3 18H21" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </button>
+      </nav>
     </div>
+  </header>
+  
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="container hero-content">
+      <h1 class="animate">
+        Full Stack <span class="gradient-text">Developer</span>
+      </h1>
+      <p class="hero-subtitle animate">
+        <span class="typing-animation" data-text="Building elegant, futuristic, and high-performance digital experiences with modern technologies."></span>
+      </p>
+      <div class="hero-cta animate">
+        <a href="#projects" class="btn btn-primary">View Projects</a>
+        <a href="#contact" class="btn btn-secondary">Contact Me</a>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Projects Section -->
+  <section class="section" id="projects">
+    <div class="container">
+      <div class="section-title animate">
+        <h2><span class="mono">01.</span> Projects</h2>
+      </div>
+      
+      <div id="projects-grid" class="projects-grid">
+        <!-- Projects will be loaded dynamically from projects.json -->
+        <div class="project-card animate">
+          <p>Loading projects...</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- About Section -->
+  <section class="section" id="about">
+    <div class="container">
+      <div class="section-title animate">
+        <h2><span class="mono">02.</span> About</h2>
+      </div>
+      
+      <div class="about">
+        <div class="about-content animate">
+          <p>I'm a passionate full-stack developer with a focus on creating elegant, futuristic, and high-performance web applications. With expertise in modern JavaScript frameworks and cloud technologies, I build solutions that are both visually stunning and functionally robust.</p>
+          
+          <p>My background in computer science and design allows me to approach problems from multiple angles, finding innovative solutions that balance technical requirements with user experience.</p>
+          
+          <p>When I'm not coding, you can find me exploring new technologies, contributing to open-source projects, or experimenting with creative coding and generative art.</p>
+        </div>
+        
+        <div class="about-image animate">
+          <!-- Placeholder for about image -->
+          <div style="aspect-ratio: 1/1; background: linear-gradient(45deg, rgba(0,245,255,0.1), rgba(255,0,255,0.1)); border-radius: 16px; display: flex; align-items: center; justify-content: center;">
+            <svg width="120" height="120" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
+              <path d="M12 6v12M6 12h12" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Contact Section -->
+  <section class="section" id="contact">
+    <div class="container">
+      <div class="section-title animate">
+        <h2><span class="mono">03.</span> Contact</h2>
+      </div>
+      
+      <div class="about-content animate">
+        <p>Interested in working together? Let's connect! You can reach me through any of the following channels:</p>
+        
+        <ul style="list-style: none; margin-bottom: 2rem;">
+          <li style="margin-bottom: 0.5rem;">
+            <span class="mono" style="color: var(--accent-primary);">Email:</span> 
+            <a href="mailto:hello@example.com" style="color: var(--text-secondary);">hello@example.com</a>
+          </li>
+          <li style="margin-bottom: 0.5rem;">
+            <span class="mono" style="color: var(--accent-primary);">GitHub:</span> 
+            <a href="https://github.com/username" target="_blank" style="color: var(--text-secondary);">github.com/username</a>
+          </li>
+          <li style="margin-bottom: 0.5rem;">
+            <span class="mono" style="color: var(--accent-primary);">LinkedIn:</span> 
+            <a href="https://linkedin.com/in/username" target="_blank" style="color: var(--text-secondary);">linkedin.com/in/username</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div class="footer-links">
+        <a href="#projects" class="footer-link">Projects</a>
+        <a href="#about" class="footer-link">About</a>
+        <a href="#contact" class="footer-link">Contact</a>
+      </div>
+      
+      <div class="footer-copy">
+        &copy; <span id="current-year">2023</span> Sebastian Saavedra. All rights reserved.
+      </div>
+    </div>
+  </footer>
+  
+  <!-- Scripts -->
+  <script src="script.js"></script>
+  <script>
+    // Set current year in footer
+    document.getElementById('current-year').textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>

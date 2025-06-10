@@ -1,0 +1,46 @@
+{
+  "projects": [
+    {
+      "name": "claude-indicator",
+      "description": "VS Code extension providing status indicators and quick access to Claude AI assistant, enhancing developer productivity.",
+      "url": null,
+      "status": "pending",
+      "technologies": ["TypeScript", "VS Code API", "Node.js"]
+    },
+    {
+      "name": "combina.today",
+      "description": "Interactive web platform for real-time data visualization and collaborative decision making.",
+      "url": "http://combina.today",
+      "status": "live",
+      "technologies": ["React", "D3.js", "Firebase", "WebSockets"]
+    },
+    {
+      "name": "terminal-portfolio",
+      "description": "Interactive terminal-inspired portfolio website with command-line interface and project showcase.",
+      "url": "https://github.com/eseSebastian/terminal-portfolio",
+      "status": "live",
+      "technologies": ["HTML", "CSS", "JavaScript"]
+    },
+    {
+      "name": "data-pulse",
+      "description": "Real-time analytics dashboard with customizable widgets and automated reporting capabilities.",
+      "url": null,
+      "status": "pending",
+      "technologies": ["Vue.js", "Chart.js", "Express", "MongoDB"]
+    },
+    {
+      "name": "neural-canvas",
+      "description": "Creative coding experiment using machine learning to generate interactive art based on user input.",
+      "url": "https://neural-canvas.netlify.app",
+      "status": "live",
+      "technologies": ["TensorFlow.js", "p5.js", "WebGL"]
+    },
+    {
+      "name": "quantum-notes",
+      "description": "Advanced note-taking application with encryption, markdown support, and cloud synchronization.",
+      "url": null,
+      "status": "pending",
+      "technologies": ["Electron", "React", "IndexedDB", "AWS"]
+    }
+  ]
+}
